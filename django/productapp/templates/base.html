@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Inventory App{% endblock title %}</title>
+    </head>
+    <body>
+        <div>
+            <table>
+                <tr>
+                    <td><a href="{% url 'login' %}">Login</a></td>
+                    <td><a href="{% url 'logout' %}">Logout</a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </body>
+</html>
