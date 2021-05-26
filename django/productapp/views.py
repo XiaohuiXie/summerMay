@@ -1,7 +1,7 @@
 from django.db.models.base import ModelStateFieldsCacheDescriptor
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView
 from django.views.generic.detail import DetailView
-from productapp.models import Product
+from productapp.models import Categories, Product
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
@@ -14,6 +14,11 @@ def index(request):
 # def products(request):
 #    products = Product.objects.all()
 #    return render(request, 'products/products.html', {'products': products})
+
+class CategoryList(ListView):
+    model = Categories
+    template_name = 'products/category.html'
+    context_object_name = 'categories'
 
 class ProductListView(ListView):
     model = Product

@@ -1,0 +1,22 @@
+{% extends '../base.html' %}
+
+{% block title %}Category List{% endblock title %}
+
+{% block content %}
+{{ categories }}
+    {% if categories %}
+        <table>
+        {% for category in categories %}
+            <tr><td>&nbsp;&nbsp;&nbsp;</td>
+                <td>{{ category.category_name }}</td>
+                <td>{{ category.category_added_date }}</td>
+                <td>{{ category.products.product_name }}</td>
+                <td><a href="{% url 'products:product_update' category.products.product_id %}" > Edit </a></td></tr>
+                <td><a href="{% url 'products:product_detail' category.products.product_id %}" > View </a></td></tr>
+                <td><a href="{% url 'products:product_delete' category.products.product_id %}" > Delete </a></td></tr>           
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No Category is added yet</p>
+    {% endif %}
+{% endblock content %}
