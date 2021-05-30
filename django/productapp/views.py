@@ -1,3 +1,4 @@
+from productapp.forms import ProductForm
 from django.db.models.base import ModelStateFieldsCacheDescriptor
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView
 from django.views.generic.detail import DetailView
@@ -17,8 +18,15 @@ def index(request):
 
 class CategoryList(ListView):
     model = Categories
-    template_name = 'products/category.html'
+    template_name = 'category/category.html'
     context_object_name = 'categories'
+ #   extra_context = { Product.objects.filter(): Categories }
+
+class CategoryCreate(CreateView):
+    model = Categories
+    template_name = 'category/category_create.html'
+    fields = ['category_name', 'category_added_date', 'descriptions']
+    success_url = reverse_lazy('products:product_list')
 
 class ProductListView(ListView):
     model = Product
@@ -33,13 +41,15 @@ class ProductDetail(DetailView):
 class ProductCreate(CreateView):
     model = Product
     template_name = 'products/product_create.html'
-    fields = ['product_name', 'photo', 'created_date']
+    fields = ['product_name', 'photo', 'created_date', 'category']
+    # form_class = ProductForm
     success_url = reverse_lazy('products:product_list')
 
 class ProductUpdate(UpdateView):
     model = Product
     template_name = 'products/product_update.html'
-    fields = ['product_name', 'photo', 'created_date']
+    # form_class = ProductForm
+    fields = ['product_name', 'photo', 'created_date', 'category']
     success_url = reverse_lazy('products:product_list')
 
 class ProductDelete(DeleteView):

@@ -5,7 +5,7 @@
 {% block content %}
     <h1>{{ productdetails.product_name }}</h1>
 
-    <image scr="{{ productdetails.photo }}"></image>
+    <image src="{{ productdetails.photo.url }}" width=100px, height=100px position=fixed></image>
 
     {{ productdetails.created_date }}
     <a href="{% url 'products:product_list' %}">Go Back</a>

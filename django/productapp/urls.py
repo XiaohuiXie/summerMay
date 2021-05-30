@@ -12,6 +12,7 @@ urlpatterns = [
     path('update/<int:pk>', views.ProductUpdate.as_view(), name='product_update'),
     path('delete/<int:pk>', views.ProductDelete.as_view(), name='product_delete'),
     path('categories/', views.CategoryList.as_view(), name='categories'),
+    path('categories/create/', views.CategoryCreate.as_view(), name='category_create'),
 ]
 
 # urlpatterns += staticfiles_urlpatterns()

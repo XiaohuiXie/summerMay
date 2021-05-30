@@ -9,7 +9,7 @@
         {% for product in products %}
             <tr><td>&nbsp;&nbsp;&nbsp;</td>
                 <td>{{ product.product_name }}</td>
-                <td><a href="{% url 'products:category' %}" > Categories </a></td>
+                <td><a href="{% url 'products:categories' %}" > Categories </a></td>
                 <td><a href="{% url 'products:product_create' %}" > Create </a></td>
                 <td><a href="{% url 'products:product_update' product.product_id %}" > Edit </a></td>
                 <td><a href="{% url 'products:product_detail' product.product_id %}" > View </a></td>
